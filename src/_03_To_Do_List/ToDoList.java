@@ -46,6 +46,7 @@ public class ToDoList implements ActionListener {
 		panel.add(load);
 		frame.setSize(250, 150);
 		frame.setVisible(true);
+		add.addActionListener(this);
 		
 	}
 	
