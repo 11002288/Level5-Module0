@@ -136,7 +136,16 @@ public class ToDoList implements ActionListener, MouseListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("src/_03_To_Do_List/ToDoList.txt"));
+			String line = br.readLine();
+			list.add(line.substring(1, line.length() - 1));
+		} catch (FileNotFoundException e2) {
+			// TODO: handle exception
+			e2.printStackTrace();
+		} catch (IOException e3) {
+			e3.printStackTrace();
+		}
 	}
 
 	@Override
