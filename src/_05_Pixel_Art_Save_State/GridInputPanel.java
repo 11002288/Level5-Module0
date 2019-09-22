@@ -1,19 +1,23 @@
 package _05_Pixel_Art_Save_State;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.FileWriter;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class GridInputPanel extends JPanel{
+public class GridInputPanel extends JPanel implements MouseListener{
 	private static final long serialVersionUID = 1L;
 	private JTextField windowWidthField;
 	private JTextField windowHeightField;
 	private JTextField rowsField;
 	private JTextField colsField;
 	private JButton submitButton;
-	private JButton save;
+	public JButton save;
 			
 	PixelArtMaker pam;
 	
@@ -39,7 +43,7 @@ public class GridInputPanel extends JPanel{
 		add(save);
 		
 		submitButton.addActionListener((e)->submit());
-		
+		save.addMouseListener(this);
 	}
 	
 	private void submit() {
@@ -70,6 +74,43 @@ public class GridInputPanel extends JPanel{
 	
 	private void invalidateInput() {
 		JOptionPane.showMessageDialog(null, "Be sure all fields are complete with positive numbers.", "ERROR", 0);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource().equals(save)) {
+			try {
+				FileWriter fw = new FileWriter("src/_05_Pixel_Art_Save_State/saveState.txt");
+				fw.w
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
