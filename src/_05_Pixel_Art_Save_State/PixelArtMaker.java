@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class PixelArtMaker implements MouseListener{
@@ -17,6 +18,7 @@ public class PixelArtMaker implements MouseListener{
 		window = new JFrame("Pixel Art");
 		window.setLayout(new FlowLayout());
 		window.setResizable(false);
+		
 		
 		window.add(gip);
 		window.pack();

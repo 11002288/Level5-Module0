@@ -4,9 +4,11 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.io.FileWriter;
 import java.util.Hashtable;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,7 +24,7 @@ public class ColorSelectionPanel extends JPanel implements MouseListener, Change
 	private JSlider rSlider;
 	private JSlider gSlider;
 	private JSlider bSlider;
-	
+	private JButton jb;
 	private Color color;
 	
 	private int r = 0;
@@ -36,6 +38,7 @@ public class ColorSelectionPanel extends JPanel implements MouseListener, Change
 		rSlider = new JSlider(JSlider.VERTICAL);
 		gSlider = new JSlider(JSlider.VERTICAL);
 		bSlider = new JSlider(JSlider.VERTICAL);
+		jb = new JButton("Save");
 		
 		rSlider.setMinimum(0);
 		rSlider.setMaximum(MAX_COLOR - 1);
@@ -47,6 +50,7 @@ public class ColorSelectionPanel extends JPanel implements MouseListener, Change
 		bSlider.setMaximum(MAX_COLOR - 1);
 		bSlider.setValue(0);
 		
+		jb.addMouseListener(this);
 		rSlider.addChangeListener(this);
 		gSlider.addChangeListener(this);
 		bSlider.addChangeListener(this);
@@ -65,6 +69,7 @@ public class ColorSelectionPanel extends JPanel implements MouseListener, Change
 		colorLabel.setIcon(new ImageIcon(colorImage));
 		add(colorLabel);
 		
+		add(jb);
 		add(new JLabel("red"));
 		add(rSlider);
 		add(new JLabel("green"));
@@ -84,7 +89,14 @@ public class ColorSelectionPanel extends JPanel implements MouseListener, Change
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
+		if (e.getSource().equals(jb)) {
+			try {
+				FileWriter fw = new FileWriter("src/_05_Pixel_Art_Save_State/saveState.txt");
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
 	}
 
 	@Override

@@ -10,27 +10,25 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class GridInputPanel extends JPanel implements MouseListener{
+public class GridInputPanel extends JPanel implements MouseListener {
 	private static final long serialVersionUID = 1L;
 	private JTextField windowWidthField;
 	private JTextField windowHeightField;
 	private JTextField rowsField;
 	private JTextField colsField;
 	private JButton submitButton;
-	public JButton save;
-			
+
 	PixelArtMaker pam;
-	
+
 	public GridInputPanel(PixelArtMaker pam) {
 		this.pam = pam;
-		
+
 		windowWidthField = new JTextField(5);
 		windowHeightField = new JTextField(5);
 		rowsField = new JTextField(5);
 		colsField = new JTextField(5);
 		submitButton = new JButton("Submit");
-		save = new JButton("Save");
-		
+
 		add(new JLabel("screen width:"));
 		add(windowWidthField);
 		add(new JLabel("\tscreen height:"));
@@ -40,12 +38,10 @@ public class GridInputPanel extends JPanel implements MouseListener{
 		add(new JLabel("\ttotal columns:"));
 		add(colsField);
 		add(submitButton);
-		add(save);
-		
-		submitButton.addActionListener((e)->submit());
-		save.addMouseListener(this);
+
+		submitButton.addActionListener((e) -> submit());
 	}
-	
+
 	private void submit() {
 		boolean valid = false;
 		int w = -1;
@@ -57,21 +53,21 @@ public class GridInputPanel extends JPanel implements MouseListener{
 			h = Integer.parseInt(windowHeightField.getText());
 			r = Integer.parseInt(rowsField.getText());
 			c = Integer.parseInt(colsField.getText());
-			
-			if(w <= 0 || h <= 0 || r <= 0 || c <= 0) {
+
+			if (w <= 0 || h <= 0 || r <= 0 || c <= 0) {
 				invalidateInput();
-			}else {
+			} else {
 				valid = true;
 			}
-		}catch(NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			invalidateInput();
 		}
-		
-		if(valid) {
+
+		if (valid) {
 			pam.submitGridData(w, h, r, c);
 		}
 	}
-	
+
 	private void invalidateInput() {
 		JOptionPane.showMessageDialog(null, "Be sure all fields are complete with positive numbers.", "ERROR", 0);
 	}
@@ -79,39 +75,31 @@ public class GridInputPanel extends JPanel implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource().equals(save)) {
-			try {
-				FileWriter fw = new FileWriter("src/_05_Pixel_Art_Save_State/saveState.txt");
-				fw.w
-			} catch (Exception e2) {
-				// TODO: handle exception
-			}
-		}
+		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	
+
 }
